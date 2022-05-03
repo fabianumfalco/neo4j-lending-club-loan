@@ -105,7 +105,7 @@ Importar dados de arquivo CSV e criar relacionamentos entre os nós dos mutuári
 LOAD CSV WITH HEADERS FROM uri AS row
 MATCH (b:Borrower {borrowerId: row.borrower_id})
 MATCH (v:VerificationStatus {verificationStatus: row.verification_status})
-MERGE (b)-[:HAS_INCOME_ANNUAL]->(v)`
+MERGE (b)-[:HAS_VERIFICATION_INCOME]->(v)`
 
 Importar dados de arquivo CSV e criar relacionamentos entre os nós dos mutuários e tempo de trabalho
 
