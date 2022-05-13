@@ -1,0 +1,18 @@
+// limpar dados
+MATCH (n)
+DETACH DELETE n;
+
+// carregar CSV e criar nós e relacionamentos relativos a soft information Employment length 
+LOAD CSV WITH HEADERS FROM 'file:///classe.um.soft.csv'
+AS row
+MERGE (b:Borrower {borrowerId: row.borrower_id})MERGE (:Borrower {borrowerId: row.borrower_id})
+MERGE (s1:SoftInfo {SoftInfoId: 'EL-'+row.emp_length,type: "EmpLength", value: row.emp_length})
+MERGE (s2:SoftInfo {SoftInfoId: 'HO-'+row.home_ownership, type: "homeOwnership", value: row.home_ownership})
+MERGE (s3:SoftInfo {SoftInfoId: 'VS-'+row.verification_status, type: "verificationStatus", value: row.verification_status})
+MERGE (s4:SoftInfo {SoftInfoId: 'AS-'+row.addr_state, type: "addressState", value: row.addr_state})
+MERGE (b)<-[:SOFT_FROM]-(s1)
+MERGE (b)<-[:SOFT_FROM]-(s2)
+MERGE (b)<-[:SOFT_FROM]-(s3)
+MERGE (b)<-[:SOFT_FROM]-(s4);
+
+

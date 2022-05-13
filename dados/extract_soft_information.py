@@ -18,11 +18,8 @@ def main():
    args = parser.parse_args()
    
    data = pd.read_csv(args.arqCsvFull)
-   df = pd.DataFrame(data, columns= ['addr_state','annual_inc','emp_length','home_ownership','verification_status','loan_status'])
-   df['borrower_id'] = 'borrower-'+(df.index+1).astype(str)
-   cols = df.columns.tolist()
-   cols = cols[-1:] + cols[:-1]
-   df = df[cols]
+   df = pd.DataFrame(data, columns= ['Unnamed: 0','addr_state','annual_inc','emp_length','home_ownership','verification_status','loan_status'])
+   df.rename(columns = {'Unnamed: 0':'borrower_id'}, inplace = True)
    #print (df)
    df.to_csv(args.arqCsvSoft, mode='w', sep=',', header=True, index=False, encoding='utf-8-sig')
    
