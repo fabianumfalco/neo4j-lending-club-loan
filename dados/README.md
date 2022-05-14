@@ -10,7 +10,9 @@ Os conjuntos de dados (4.88 GB) foram disponibilizados de forma pública em [Kag
 
 Apenas os dados qualitativos (soft) foram considerados neste projeto.
 
-Para extrair estes tipos de dados, foi criado o script pyhton abaixo [extract_soft_information.py](https://github.com/fabianumfalco/neo4j-lending-club-loan/blob/main/data/extract_soft_information.py)
+Para extrair estes tipos de dados, foi criado o script pyhton  [extract_soft_information.py](https://github.com/fabianumfalco/neo4j-lending-club-loan/blob/main/data/extract_soft_information.py). Exemplo abaixo de uso desse script:
+
+ <code>python extract_soft_information.py -i classe.um.csv -o classe.um.soft.csv</code>
 
 Alguns estudos sugerem que a coleta e análise de dados qualitativos (soft/suaves) de mutuários sobre assuntos como família, amizades e outras questões pessoais e difíceis de conferir de forma quantitativa ajudam a reduzir as probabilidades de inadimplência de empréstimos.
 
@@ -23,6 +25,6 @@ home_ownership | O status de propriedade da casa fornecido pelo mutuário durant
 verification_status | Indica se a renda foi verificada por LC, se não foi verificada, ou se a fonte de renda foi verificada
 loan_status | Situação atual do empréstimo
 
-# Grafos no neo4j
+# Grafo no neo4j
 
 O arquivo [node-similarity-classe.um.txt](https://github.com/fabianumfalco/neo4j-lending-club-loan/blob/main/dados/node-similarity-classe.um.txt) apresenta os comandos Cypher para criação do Grafo e sua projeção.
