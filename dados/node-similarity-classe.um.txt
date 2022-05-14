@@ -15,4 +15,28 @@ MERGE (b)<-[:SOFT_FROM]-(s2)
 MERGE (b)<-[:SOFT_FROM]-(s3)
 MERGE (b)<-[:SOFT_FROM]-(s4);
 
+// limpar grafo projetado - https://neo4j.com/docs/graph-data-science/current/graph-drop/
+CALL gds.graph.drop('myGraph') YIELD graphName;
+
+// criar grafo projetado - https://neo4j.com/docs/graph-data-science/current/graph-project/
+// com nós SoftInfo e Borrower e com o relacionamento SOFT_FROM:
+//     graphName - myGraph
+//     nodeCount - 7110
+//     relationshipCount - 28376
+//     projectMillis - 318
+CALL gds.graph.project(
+    'myGraph',
+    ['SoftInfo', 'Borrower'],
+    {
+        SOFT_FROM: {
+            type: 'SOFT_FROM',
+            properties: {
+                strength: {
+                    property: 'strength',
+                    defaultValue: 1.0
+                }
+            }
+        }
+    }
+);
 
