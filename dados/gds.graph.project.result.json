@@ -1,0 +1,36 @@
+﻿[
+  {
+    "nodeProjection": {
+"SoftInfo": {
+"label": "SoftInfo",
+"properties": {
+
+        }
+      },
+"Borrower": {
+"label": "Borrower",
+"properties": {
+
+        }
+      }
+    },
+    "relationshipProjection": {
+"SOFT_FROM": {
+"orientation": "NATURAL",
+"aggregation": "DEFAULT",
+"type": "SOFT_FROM",
+"properties": {
+"strength": {
+"defaultValue": 1.0,
+"property": "strength",
+"aggregation": "DEFAULT"
+          }
+        }
+      }
+    },
+    "graphName": "myGraph",
+    "nodeCount": 7110,
+    "relationshipCount": 28376,
+    "projectMillis": 318
+  }
+]
