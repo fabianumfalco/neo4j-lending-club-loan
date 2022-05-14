@@ -40,3 +40,20 @@ CALL gds.graph.project(
     }
 );
 
+// Estimar o custo de execução, em termos de memória, do algoritmo de similaridade de nós
+// https://neo4j.com/docs/graph-data-science/current/algorithms/node-similarity/#algorithms-node-similarity-examples-memory-estimation
+CALL gds.nodeSimilarity.write.estimate('myGraph', {
+  writeRelationshipType: 'SIMILAR',
+  writeProperty: 'score'
+})
+YIELD nodeCount, relationshipCount, bytesMin, bytesMax, requiredMemory
+
+// No streammodo de execução, o algoritmo retorna a pontuação de similaridade para cada relacionamento. 
+// Isso nos permite inspecionar os resultados diretamente ou pós-processá-los no Cypher sem nenhum efeito colateral.
+// https://neo4j.com/docs/graph-data-science/current/algorithms/node-similarity/#algorithms-node-similarity-examples-stream
+CALL gds.nodeSimilarity.stream('myGraph')
+YIELD node1, node2, similarity
+RETURN gds.util.asNode(node1).SoftInfoId AS SoftInfo1, gds.util.asNode(node2).SoftInfoId AS SoftInfo2, similarity
+ORDER BY similarity DESCENDING, SoftInfo1, SoftInfo2
+
+
