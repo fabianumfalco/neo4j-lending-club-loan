@@ -48,7 +48,7 @@ CALL gds.nodeSimilarity.write.estimate('myGraph', {
 })
 YIELD nodeCount, relationshipCount, bytesMin, bytesMax, requiredMemory
 
-// No streammodo de execução, o algoritmo retorna a pontuação de similaridade para cada relacionamento. 
+// No modo stream de execução, o algoritmo retorna a pontuação de similaridade para cada relacionamento. 
 // Isso nos permite inspecionar os resultados diretamente ou pós-processá-los no Cypher sem nenhum efeito colateral.
 // https://neo4j.com/docs/graph-data-science/current/algorithms/node-similarity/#algorithms-node-similarity-examples-stream
 CALL gds.nodeSimilarity.stream('myGraph')
