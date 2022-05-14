@@ -56,4 +56,9 @@ YIELD node1, node2, similarity
 RETURN gds.util.asNode(node1).SoftInfoId AS SoftInfo1, gds.util.asNode(node2).SoftInfoId AS SoftInfo2, similarity
 ORDER BY similarity DESCENDING, SoftInfo1, SoftInfo2
 
+// Retornar uma única linha contendo um resumo do resultado do algoritmo.
+// https://neo4j.com/docs/graph-data-science/current/algorithms/node-similarity/#algorithms-node-similarity-examples-stats
+CALL gds.nodeSimilarity.stats('myGraph')
+YIELD nodesCompared, similarityPairs
+
 
